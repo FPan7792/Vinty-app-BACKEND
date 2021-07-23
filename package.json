@@ -1,0 +1,32 @@
+{
+  "name": "vinted-exo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index-vinted.js",
+  "dependencies": {
+    "cloudinary": "^1.26.2",
+    "cors": "^2.8.5",
+    "crypto-js": "^4.0.0",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "express-formidable": "^1.2.0",
+    "mongoose": "^5.13.2",
+    "uid2": "^0.0.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FPan7792/vinted-app.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FPan7792/vinted-app/issues"
+  },
+  "homepage": "https://github.com/FPan7792/vinted-app#readme"
+}
