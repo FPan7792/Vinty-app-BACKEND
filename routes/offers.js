@@ -53,7 +53,7 @@ router.get("/offers", async (req, res) => {
       .sort(sort)
       .limit(limit)
       .skip(skip)
-      .select("product_name product_price");
+      .select("product_name product_price product_description product_details _id owner product_image.secure_url");
 
     if (totalFound(offers) < 1) {
       res.json({ message: "No more offers" });
@@ -73,7 +73,9 @@ router.get("/offer/:_id", async (req, res) => {
   try {
     console.log(req.params);
     const offer = await Offer.findOne(req.params).populate("owner");
-    res.status(200).json(offer);
+    if (offer) {
+      res.status(200).json(offer) ;
+    } else res.send("No offer found corresponding with this id")
   } catch (error) {
     res.status(400).send(error.message);
   }

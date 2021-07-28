@@ -3,6 +3,8 @@ const router = express.Router();
 const SHA256 = require("crypto-js/sha256");
 const encBase64 = require("crypto-js/enc-base64");
 const uid2 = require("uid2");
+const cloudinary = require("cloudinary").v2;
+
 
 const token = uid2(16);
 const salt = uid2(16);
@@ -66,10 +68,10 @@ router.post("/user/login", async (req, res) => {
   }
 });
 
-router.get("/user/find", async (req, res) => {
+router.get("/user/search", async (req, res) => {
 
   try {
-    const findUser = await Account.findOne({email: req.query.email})
+    const findUser = await Account.findOne({ email: req.query.email })
     console.log(findUser)
 
     if (findUser) {
@@ -103,13 +105,13 @@ router.post("/offer/publish", isAuthenticated, async (req, res) => {
     });
     let pictureToUpload = req.files.product_image.path;
     const result = await cloudinary.uploader.upload(pictureToUpload, {
-      folder: `/vinted-app/offer/${newOffer.id}`,
+      folder: `/vinted-app/offers/${newOffer.id}`,
     });
     newOffer.product_image = result;
-    console.log(newOffer.id);
     await newOffer.save();
     await res.status(200).json(newOffer);
     console.log("Your announce had been published");
+    console.log(newOffer)
   } catch (error) {
     res.status(400).send(error.message);
   }
