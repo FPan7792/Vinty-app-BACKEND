@@ -105,7 +105,7 @@ router.post("/offer/publish", isAuthenticated, async (req, res) => {
     });
     let pictureToUpload = req.files.product_image.path;
     const result = await cloudinary.uploader.upload(pictureToUpload, {
-      folder: `/vinted-app/offers/${newOffer.id}`,
+      folder: `/vinted-app/offers/${req.user._id}/${newOffer.id}`,
     });
     newOffer.product_image = result;
     await newOffer.save();
