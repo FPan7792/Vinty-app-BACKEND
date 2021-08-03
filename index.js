@@ -6,7 +6,6 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const cloudinary = require("cloudinary").v2;
 
-
 const app = express();
 app.use(formidable());
 app.use(cors());
@@ -23,6 +22,9 @@ app.use(userRoutes);
 
 const offersRoutes = require("./routes/offers");
 app.use(offersRoutes);
+
+const paymentRoutes = require("./routes/payment");
+app.use(paymentRoutes);
 
 mongoose.connect(process.env.MONGODB_URI, {
   useUnifiedTopology: true,
