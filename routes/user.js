@@ -86,13 +86,13 @@ router.post("/offer/publish", isAuthenticated, async (req, res) => {
       product_name: req.fields.product_name,
       product_description: req.fields.product_description,
       product_price: req.fields.product_price,
-      product_details: [
-        { ETAT: req.fields.ETAT },
-        { EMPLACEMENT: req.fields.EMPLACEMENT },
-        { MARQUE: req.fields.MARQUE },
-        { TAILLE: req.fields.TAILLE },
-        { COULEUR: req.fields.COULEUR },
-      ],
+      product_details: {
+        ETAT: req.fields.ETAT,
+        EMPLACEMENT: req.fields.EMPLACEMENT,
+        MARQUE: req.fields.MARQUE,
+        TAILLE: req.fields.TAILLE,
+        COULEUR: req.fields.COULEUR,
+      },
       owner: req.user._id,
     });
     let pictureToUpload = req.files.product_image.path;
