@@ -1,5 +1,5 @@
 const express = require("express");
-const formidable = require("express-formidable");
+// const formidable = require("express-formidable");
 const router = express.Router();
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
@@ -8,6 +8,9 @@ const Payment = require("../models/Payment");
 router.post("/payment", async (req, res) => {
   try {
     const stripeToken = req.fields.stripe_token;
+    console.log(stripeToken);
+    console.log(req.fields.product_price);
+    console.log(req.fields.product_description);
 
     const response = await stripe.charges.create({
       amount: req.fields.product_price * 100,
