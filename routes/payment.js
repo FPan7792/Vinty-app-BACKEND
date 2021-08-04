@@ -1,5 +1,4 @@
 const express = require("express");
-// const formidable = require("express-formidable");
 const router = express.Router();
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
